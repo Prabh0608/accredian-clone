@@ -1,14 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Accredian Enterprise — Upskill Your Workforce at Scale",
+  title: "Accredian Enterprise",
   description:
-    "Partner with IITs, IIMs, and global universities to upskill your enterprise teams with curated programs, live mentorship, and real-time analytics that deliver measurable ROI.",
-  openGraph: {
-    title: "Accredian Enterprise",
-    description: "India's most trusted enterprise learning platform.",
-    type: "website",
-  },
+    "Next-Gen Expertise For Your Enterprise. Cultivate high-performance teams through expert learning.",
 };
 
 export default function RootLayout({ children }) {

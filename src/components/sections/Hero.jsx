@@ -1,135 +1,75 @@
-import { heroStats } from "@/lib/data";
-import Button from "@/components/ui/Button";
+import { IMAGES } from "@/lib/data";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-24 pb-16">
-      {/* ── Background layers ── */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0B1221] via-[#0D1829] to-[#091018]" />
-
-      {/* Glowing orbs */}
-      <div className="absolute top-1/4 left-1/4 w-80 h-80 rounded-full bg-blue-600/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-sky-500/8 blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-indigo-900/15 blur-3xl pointer-events-none" />
-
-      {/* Grid pattern */}
-      <div
-        className="absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      {/* ── Content ── */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass glow-border text-xs font-medium text-sky mb-8 animate-fade-up">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-sky-400" />
-            </span>
-            India&apos;s #1 Enterprise Learning Platform · Trusted by 500+
-            Companies
-          </div>
-
-          {/* Headline */}
-          <h1
-            className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[1.08] mb-6 animate-fade-up"
-            style={{
-              fontFamily: "var(--font-display)",
-              animationDelay: "0.1s",
-              opacity: 0,
-            }}
-          >
-            Upskill Your <span className="gradient-text">Workforce</span>
-            <br />
-            At Scale
+    <div
+      id="home"
+      className="flex justify-center items-center my-4 mt-20 sm:mt-32 xl:px-12 sm:px-4 mb-10 md:mb-0"
+    >
+      <div className="rounded-lg md:rounded-3xl bg-blue-50 flex flex-col-reverse sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-4 md:gap-8 lg:gap-12 shadow-card overflow-visible w-full">
+        {/* Left: text */}
+        <div className="sm:w-1/2 w-full sm:ml-7 flex flex-col justify-between gap-4 sm:gap-4 md:gap-8 lg:gap-10 md:ps-2 lg:ps-8">
+          <h1 className="text-center sm:text-left cursor-context-menu text-2xl sm:text-4xl lg:text-6xl xxl:text-7xl 2xl:text-[5.2vw] 3xl:text-[5.0rem] font-bold max-w-full sm:max-w-[350px] lg:max-w-[700px] pt-2 capitalize px-8 sm:px-0 font-circular">
+            Next-Gen <span className="text-universal">Expertise</span> for Your
+            <span className="text-universal"> Enterprise</span>
           </h1>
 
-          {/* Sub-headline */}
-          <p
-            className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 animate-fade-up"
-            style={{ animationDelay: "0.2s", opacity: 0 }}
-          >
-            Partner with{" "}
-            <span className="text-slate-200 font-medium">
-              IITs, IIMs, and global universities
-            </span>{" "}
-            to upskill enterprise teams with curated programs, live mentorship,
-            and real-time analytics that deliver measurable ROI.
+          <p className="font-medium md:font-normal text-sm sm:text-lg lg:text-2xl text-paleBlack max-w-full p-2 sm:p-0 w-full sm:max-w-[350px] text-center sm:text-start font-circular">
+            Cultivate high-performance teams through expert learning.
           </p>
 
-          {/* CTA row */}
-          <div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16 animate-fade-up"
-            style={{ animationDelay: "0.3s", opacity: 0 }}
-          >
-            <Button variant="primary" size="lg" href="#contact">
-              Get a Free Demo
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Button>
-            <Button variant="secondary" size="lg" href="#features">
-              Explore Features
-            </Button>
-          </div>
+          <ul className="grid grid-cols-2 mx-auto sm:flex sm:mx-0 sm:justify-start sm:flex-wrap gap-4">
+            {["Tailored Solutions", "Industry Insights", "Expert Guidance"].map(
+              (item) => (
+                <li key={item} className="flex items-center gap-2 mb-2">
+                  <CircleCheck />
+                  {item}
+                </li>
+              ),
+            )}
+            {/* "Measurable Impact" — visible only on mobile */}
+            <li className="flex items-center gap-2 mb-2 sm:hidden">
+              <CircleCheck />
+              Measurable Impact
+            </li>
+          </ul>
 
-          {/* Stats row */}
-          <div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 stagger animate-fade-up"
-            style={{ animationDelay: "0.4s", opacity: 0 }}
-          >
-            {heroStats.map((stat) => (
-              <div
-                key={stat.label}
-                className="glass rounded-2xl p-5 text-center hover:border-blue-500/30 transition-all duration-300"
-              >
-                <div
-                  className="text-3xl md:text-4xl font-bold gradient-text mb-1"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {stat.value}
-                </div>
-                <div className="text-xs text-slate-500 font-medium uppercase tracking-wide">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
+          <div className="flex mb-6 sm:mb-0 justify-center sm:justify-start">
+            <button className="w-[80%] sm:w-[170px] p-[7px] text-md font-normal text-white bg-universal rounded-lg shadow-md">
+              <p className="text-sm md:text-xl">Enquire Now</p>
+            </button>
           </div>
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-slate-600 animate-bounce">
-        <span className="text-xs">Scroll</span>
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M19 9l-7 7-7-7"
+        {/* Right: hero image */}
+        <div className="flex w-full sm:w-1/2 sm:justify-end sm:items-end justify-center">
+          <img
+            src={IMAGES.hero}
+            alt="headerImage"
+            className="sm:w-full sm:h-full h-[80%] w-[80%]"
           />
-        </svg>
+        </div>
       </div>
-    </section>
+    </div>
+  );
+}
+
+function CircleCheck() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="w-6 h-6 text-green-600"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
   );
 }

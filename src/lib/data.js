@@ -1,157 +1,204 @@
-// ─── Navigation ───────────────────────────────────────────────────────────────
+const IMG =
+  "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/other/";
+
+export const IMAGES = {
+  logo: IMG + "logo.webp",
+  logoDark:
+    "https://storage.googleapis.com/accredian-assets/Frontend_Assests/Images/Accredian-react-site-images/logo/accredainnew.webp",
+  hero: IMG + "corporate-big-hero-v4.webp",
+  edgeDesktop: IMG + "accredian-edge-usp-v3.svg",
+  edgeMobile: IMG + "accredian-edge-usp-mobile.svg",
+  catV2: IMG + "catV2.svg",
+  imageHuman: IMG + "imagehuman.png",
+  // clients
+  rel: IMG + "rel.png",
+  hcl: IMG + "hcl.png",
+  ibm: IMG + "ibm.png",
+  crif: IMG + "crif.png",
+  adp: IMG + "adp.svg",
+  bayer: IMG + "bayer.svg",
+  // course cards
+  projectMgmt: IMG + "project-management-v2.webp",
+  digitalTrans: IMG + "digital-transformation-v2.webp",
+  dataScience: IMG + "data-science-v2.webp",
+  seniorMgmt: IMG + "senior-management-v2.webp",
+};
+
+// ── Nav links (exact from DOM) ──────────────────────────────────────────────
 export const navLinks = [
-  { label: "Solutions", href: "#solutions" },
-  { label: "Features", href: "#features" },
-  { label: "Programs", href: "#programs" },
+  { label: "Home", href: "#home" },
+  { label: "Stats", href: "#stats", active: true },
+  { label: "Clients", href: "#clients" },
+  { label: "Accredian Edge", href: "#accredianEdge" },
+  { label: "CAT", href: "#cat" },
+  { label: "How It Works", href: "#howItWorks" },
+  { label: "FAQs", href: "#faqs" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "Partners", href: "#partners" },
 ];
 
-// ─── Hero Stats ───────────────────────────────────────────────────────────────
-export const heroStats = [
-  { value: "500+", label: "Enterprise Clients" },
-  { value: "94%", label: "Avg. Completion Rate" },
-  { value: "40%", label: "Productivity Uplift" },
-  { value: "50K+", label: "Employees Upskilled" },
-];
-
-// ─── Features ─────────────────────────────────────────────────────────────────
-export const features = [
+// ── Stats ───────────────────────────────────────────────────────────────────
+export const stats = [
   {
-    id: 1,
-    icon: "🎓",
-    title: "World-Class Curriculum",
-    description:
-      "Programs co-designed with IITs, IIMs, and global universities. Every course is rigorously structured for real-world applicability.",
+    value: "10K+",
+    label: "Professionals trained for exceptional career success",
   },
   {
-    id: 2,
-    icon: "📊",
-    title: "Real-Time Analytics",
-    description:
-      "Track completion rates, engagement metrics, and ROI through a live command-center dashboard available 24/7.",
+    value: "200+",
+    label: "Sessions delivered with unmatched learning excellence",
+    last: false,
   },
   {
-    id: 3,
-    icon: "🧑‍💼",
-    title: "Expert Mentorship",
-    description:
-      "1:1 live sessions with industry practitioners. Over 500 mentors across AI/ML, Data Science, Product, and Leadership.",
-  },
-  {
-    id: 4,
-    icon: "🤝",
-    title: "Cohort Learning",
-    description:
-      "Structured cohorts foster collaboration, accountability, and peer learning — driving completion rates above 94%.",
-  },
-  {
-    id: 5,
-    icon: "🛠️",
-    title: "Custom Programs",
-    description:
-      "Tailor curriculum entirely to your organization's specific tech stack, skill gaps, and strategic goals.",
-  },
-  {
-    id: 6,
-    icon: "🤖",
-    title: "AI-Adaptive Paths",
-    description:
-      "Intelligent learning paths that adjust to each learner's pace, baseline, and performance in real-time.",
+    value: "5K+",
+    label: "Active learners engaged in dynamic courses",
+    last: true,
   },
 ];
 
-// ─── Programs ─────────────────────────────────────────────────────────────────
-export const programs = [
+// ── Clients ─────────────────────────────────────────────────────────────────
+export const clients = [
+  { src: IMAGES.rel, alt: "Reliance" },
+  { src: IMAGES.hcl, alt: "HCL" },
+  { src: IMAGES.ibm, alt: "IBM" },
+  { src: IMAGES.crif, alt: "CRIF" },
+  { src: IMAGES.adp, alt: "ADP" },
+  { src: IMAGES.bayer, alt: "Bayer" },
+];
+
+// ── Domain Expertise cards ───────────────────────────────────────────────────
+export const domainCards = [
+  { label: "Product & Innovation Hub", icon: "lightbulb" },
+  { label: "Gen-AI Mastery", icon: "brain" },
+  { label: "Leadership Elevation", icon: "users" },
+  { label: "Tech & Data Insights", icon: "chart" },
+  { label: "Operations Excellence", icon: "settings" },
+  { label: "Digital Enterprise", icon: "globe" },
+  { label: "Fintech Innovation Lab", icon: "banknote" },
+];
+
+// ── Course Segmentation (swiper slides) ─────────────────────────────────────
+export const courseSlides = [
   {
-    id: 1,
-    category: "AI & Machine Learning",
-    tag: "High Demand",
-    duration: "6 months",
-    partner: "IIT Guwahati",
-    level: "Advanced",
-    enrolled: "2,400+",
+    img: IMAGES.projectMgmt,
+    alt: "Program Specific",
+    label: "Program Specific",
   },
   {
-    id: 2,
-    category: "Data Science",
-    tag: "Bestseller",
-    duration: "4 months",
-    partner: "IIM Lucknow",
-    level: "Intermediate",
-    enrolled: "3,800+",
+    img: IMAGES.digitalTrans,
+    alt: "Industry Specific",
+    label: "Industry Specific",
+  },
+  { img: IMAGES.dataScience, alt: "Topic Specific", label: "Topic Specific" },
+  { img: IMAGES.seniorMgmt, alt: "Level Specific", label: "Level Specific" },
+];
+
+// ── Who Should Join ──────────────────────────────────────────────────────────
+export const whoJoin = [
+  {
+    icon: "monitor-check",
+    title: "Tech Professionals",
+    desc: "Enhance expertise, embrace tech, drive innovation.",
   },
   {
-    id: 3,
-    category: "Product Management",
-    tag: "New",
-    duration: "5 months",
-    partner: "SP Jain",
-    level: "All Levels",
-    enrolled: "1,200+",
+    icon: "monitor-x",
+    title: "Non-Tech Professionals",
+    desc: "Adapt digitally, collaborate in tech environments.",
   },
   {
-    id: 4,
-    category: "Leadership & Management",
-    tag: "Popular",
-    duration: "3 months",
-    partner: "IIM Visakhapatnam",
-    level: "Senior",
-    enrolled: "980+",
+    icon: "graduation-cap",
+    title: "Emerging Professionals",
+    desc: "Develop powerful skills for rapid career growth.",
+  },
+  {
+    icon: "briefcase",
+    title: "Senior Professionals",
+    desc: "Strengthen leadership, enhance strategic decisions.",
   },
 ];
 
-// ─── Testimonials ─────────────────────────────────────────────────────────────
+// ── How It Works ─────────────────────────────────────────────────────────────
+export const howItWorks = [
+  {
+    step: 1,
+    icon: "chart-combined",
+    title: "Skill Gap Analysis",
+    desc: "Assess team skill gaps and developmental needs.",
+    icon_type: "chart-combined",
+  },
+  {
+    step: 2,
+    icon: "presentation",
+    title: "Customized Training Plan",
+    desc: "Create a tailored roadmap addressing organizational goals.",
+    icon_type: "presentation",
+  },
+  {
+    step: 3,
+    icon: "monitor-play",
+    title: "Flexible Program Delivery",
+    desc: "Deliver adaptable programs aligned with industry and organizational needs.",
+    icon_type: "monitor-play",
+  },
+];
+
+// ── FAQs ─────────────────────────────────────────────────────────────────────
+export const faqCategories = [
+  "About the Course",
+  "About the Delivery",
+  "Miscellaneous",
+];
+
+export const faqs = {
+  "About the Course": [
+    {
+      q: "What types of corporate training programs does Accredian offer?",
+      a: "Accredian provides industry-specific, customizable training programs tailored to meet your organization's unique needs, covering domains like leadership, tech, data, and fintech.",
+    },
+    {
+      q: "What domain specializations are available?",
+      a: "We offer expertise in various domains, including Leadership Development, Tech & Data, Fintech, Digital Business, Product Innovation, Operations Management, and Generative AI.",
+    },
+    {
+      q: "Are programs available online or in-person?",
+      a: "We offer flexible delivery options including fully online, in-person, and hybrid formats to suit your team's geographic distribution and schedule.",
+    },
+  ],
+  "About the Delivery": [
+    {
+      q: "How are training sessions delivered?",
+      a: "Training is delivered through live instructor-led sessions, self-paced modules, and cohort-based learning — customized based on your team's needs.",
+    },
+    {
+      q: "What is the typical duration of a program?",
+      a: "Programs range from intensive 1-day workshops to multi-month learning journeys, depending on the depth of skill development required.",
+    },
+  ],
+  Miscellaneous: [
+    {
+      q: "Can we customize the curriculum?",
+      a: "Absolutely. Every program is co-designed with your L&D team to address your specific skill gaps, tech stack, and organizational goals.",
+    },
+    {
+      q: "How do you measure ROI?",
+      a: "We provide a live analytics dashboard tracking completion rates, assessment scores, engagement metrics, and business impact indicators.",
+    },
+  ],
+};
+
+// ── Testimonials ──────────────────────────────────────────────────────────────
 export const testimonials = [
   {
-    id: 1,
-    quote:
-      "Accredian Enterprise transformed how we think about talent development. Within 6 months, our data engineering team's velocity improved by 40%. The ROI is undeniable.",
-    name: "Priya Sharma",
-    title: "Chief People Officer",
-    company: "TechCorp India",
-    avatar: "PS",
+    logo: IMAGES.adp,
+    alt: "ADP",
+    text: '"We would like to thank Accredian for the wonderful support and the beautiful journey. The team turned our vision into reality with unparalleled dedication, service, and expertise throughout the entire process."',
   },
   {
-    id: 2,
-    quote:
-      "The combination of IIT-quality curriculum and live mentorship is unlike anything else in the market. Our engineers are now capable of leading ML projects independently.",
-    name: "Rahul Mehta",
-    title: "VP Engineering",
-    company: "FinEdge Solutions",
-    avatar: "RM",
+    logo: IMAGES.bayer,
+    alt: "Bayer",
+    text: '"Accredian\'s commitment to excellence is unmatched. They consistently go the extra mile to ensure our needs are met and exceeded, providing reliable support and high-quality service every step of the way."',
   },
   {
-    id: 3,
-    quote:
-      "We onboarded 300 managers across three geographies simultaneously. The enterprise dashboard made tracking trivially easy. Completion rates hit 96% — unprecedented for us.",
-    name: "Anjali Nair",
-    title: "L&D Director",
-    company: "GlobalOps Ltd.",
-    avatar: "AN",
+    logo: IMAGES.rel,
+    alt: "Reliance",
+    text: '"Choosing Accredian for the learning & development of our employees was a beneficial decision. The value derived from the course is immense & their support team is always there to help our employees."',
   },
 ];
-
-// ─── Partners ─────────────────────────────────────────────────────────────────
-export const partners = [
-  { id: 1, name: "IIT Guwahati", short: "IIT-G" },
-  { id: 2, name: "IIM Lucknow", short: "IIM-L" },
-  { id: 3, name: "IIM Visakhapatnam", short: "IIM-V" },
-  { id: 4, name: "SP Jain", short: "SPJ" },
-  { id: 5, name: "XLRI", short: "XLRI" },
-  { id: 6, name: "IIM Trichy", short: "IIM-T" },
-];
-
-// ─── CTA / Lead Form ──────────────────────────────────────────────────────────
-export const industries = [
-  "Technology",
-  "BFSI / Finance",
-  "Healthcare",
-  "Manufacturing",
-  "Retail / E-commerce",
-  "Consulting",
-  "Education",
-  "Other",
-];
-
-export const teamSizes = ["1–50", "51–200", "201–500", "501–1000", "1000+"];

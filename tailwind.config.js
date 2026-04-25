@@ -7,20 +7,28 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        electric: "#2563EB",
-        sky: "#38BDF8",
-        navy: "#0B1221",
-        mint: "#10B981",
+        universal: "#2563EB",
+        paleBlack: "#374151",
       },
       fontFamily: {
-        display: ["Syne", "sans-serif"],
-        body: ["DM Sans", "sans-serif"],
+        circular: ["Inter", "sans-serif"],
       },
-      backgroundOpacity: {
-        4: "0.04",
-        6: "0.06",
-        8: "0.08",
-        15: "0.15",
+      screens: {
+        xs: "480px",
+        xxl: "1400px",
+        "3xl": "1700px",
+      },
+      maxWidth: {
+        "85rem": "85rem",
+      },
+      keyframes: {
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        marquee: "marquee 18s linear infinite",
       },
     },
   },
