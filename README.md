@@ -47,11 +47,11 @@ Visit: http://localhost:3000
 
 ```mermaid id="8x2zcf"
 graph TD
-    U[User Browser] --> F[Frontend (Next.js UI)]
-    F --> C[Components Layer]
+    U[User] --> F[Frontend - Next.js]
+    F --> C[Reusable Components]
     C --> P[Page Sections]
-    F --> A[/api/leads]
-    A --> R[Response Handling]
+    F --> A[API Route - /api/leads]
+    A --> R[Response]
     R --> F
 ```
 
