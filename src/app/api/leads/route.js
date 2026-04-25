@@ -4,11 +4,32 @@ const leads = [];
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { name, email, company } = body;
+    const {
+      name,
+      email,
+      phone,
+      company,
+      domain,
+      candidateCount,
+      deliveryMode,
+      location,
+    } = body;
 
-    if (!name || !email || !company) {
+    if (
+      !name ||
+      !email ||
+      !phone ||
+      !company ||
+      !domain ||
+      !candidateCount ||
+      !deliveryMode ||
+      !location
+    ) {
       return Response.json(
-        { error: "name, email, and company are required." },
+        {
+          error:
+            "name, email, phone, company, domain, candidate count, delivery mode, and location are required.",
+        },
         { status: 400 },
       );
     }

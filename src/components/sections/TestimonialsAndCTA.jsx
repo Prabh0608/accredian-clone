@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { testimonials } from "@/lib/data";
+import { useEnquiryModal } from "@/components/common/EnquiryModal";
 
 // ── Testimonials ──────────────────────────────────────────────────────────────
 export function Testimonials() {
@@ -100,6 +101,8 @@ export function Testimonials() {
 
 // ── Support / CTA Section ─────────────────────────────────────────────────────
 export function SupportCTA() {
+  const { openModal } = useEnquiryModal();
+
   return (
     <div
       id="supportSection"
@@ -131,7 +134,11 @@ export function SupportCTA() {
           </div>
         </div>
 
-        <button className="cta-button w-full max-w-[200px] py-2 sm:px-4 sm:py-3 mt-4 rounded-lg text-blue-500 bg-white text-xl font-semibold flex items-center justify-center gap-1 font-circular">
+        <button
+          type="button"
+          onClick={openModal}
+          className="cta-button mt-4 flex w-full max-w-[200px] items-center justify-center gap-1 rounded-lg bg-white py-2 text-xl font-semibold text-blue-500 transition hover:bg-slate-100 font-circular sm:px-4 sm:py-3"
+        >
           Contact Us
           <svg
             fill="currentColor"

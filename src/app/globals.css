@@ -6,7 +6,34 @@
 
 :root {
   --universal: #1a73e8;
-  --pale-black: #374151;
+  --background: #ffffff;
+  --foreground: #111827;
+  --card: #f9fafb;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --universal: #60a5fa; /* Lighter blue for dark mode readability */
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: "Poppins", sans-serif; /* Consistent font pairing */
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.dark body {
+  color-scheme: dark;
+}
+
+/* Fix Spacing Scale Utility */
+.section-padding {
+  @apply py-16 px-6 md:py-24 md:px-14;
 }
 
 * {
@@ -19,13 +46,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  font-family: "Circular Std", "Circular", "Poppins", sans-serif;
-  background: #ffffff;
-  color: #111827;
-  -webkit-font-smoothing: antialiased;
-}
-
 /* ── text-universal utility ── */
 .text-universal {
   color: #1a73e8;
@@ -35,6 +55,62 @@ body {
 }
 .border-universal {
   border-color: #1a73e8;
+}
+
+/* Common dark-mode overrides for the current light-first component set */
+.dark .bg-white {
+  background-color: #111827 !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #1f2937 !important;
+}
+
+.dark .bg-blue-50 {
+  background-color: #0f172a !important;
+}
+
+.dark .bg-blue-100 {
+  background-color: rgba(96, 165, 250, 0.14) !important;
+}
+
+.dark .bg-gray-300 {
+  background-color: #374151 !important;
+}
+
+.dark .text-black,
+.dark .text-gray-900 {
+  color: #f9fafb !important;
+}
+
+.dark .text-paleBlack,
+.dark .text-neutral-600 {
+  color: #dbe4f0 !important;
+}
+
+.dark .text-gray-700,
+.dark .text-gray-600,
+.dark .text-gray-500 {
+  color: #d1d5db !important;
+}
+
+.dark .text-neutral-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .border-gray-200,
+.dark .border-gray-300,
+.dark .border-gray-700,
+.dark .border-neutral-300,
+.dark .border-blue-300 {
+  border-color: #374151 !important;
+}
+
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-sm,
+.dark .shadow-card {
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.35) !important;
 }
 
 /* ── shadow-card ── */

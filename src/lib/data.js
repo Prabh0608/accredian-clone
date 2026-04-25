@@ -22,6 +22,7 @@ export const IMAGES = {
   digitalTrans: IMG + "digital-transformation-v2.webp",
   dataScience: IMG + "data-science-v2.webp",
   seniorMgmt: IMG + "senior-management-v2.webp",
+  business: IMG + "business-v2.webp",
 };
 
 // ── Nav links (exact from DOM) ──────────────────────────────────────────────

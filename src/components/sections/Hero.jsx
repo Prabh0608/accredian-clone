@@ -1,14 +1,19 @@
+"use client";
+
 import { IMAGES } from "@/lib/data";
+import { useEnquiryModal } from "@/components/common/EnquiryModal";
 
 export default function Hero() {
+  const { openModal } = useEnquiryModal();
+
   return (
     <div
       id="home"
       className="flex justify-center items-center my-4 mt-20 sm:mt-32 xl:px-12 sm:px-4 mb-10 md:mb-0"
     >
-      <div className="rounded-lg md:rounded-3xl bg-blue-50 flex flex-col-reverse sm:flex-row items-center justify-center sm:justify-between gap-4 sm:gap-4 md:gap-8 lg:gap-12  shadow-card overflow-visible">
+      <div className="flex flex-col-reverse items-center justify-center gap-4 overflow-visible rounded-lg bg-blue-50 shadow-card transition-colors dark:bg-slate-900 sm:flex-row sm:justify-between sm:gap-4 md:gap-8 md:rounded-3xl lg:gap-12">
         <div className="w-full sm:w-1/2 laptop:w-[52%] sm:ml-7 flex flex-col justify-between gap-4 sm:gap-4 md:gap-8 laptop:gap-6 lg:gap-10 md:ps-2 lg:ps-8 laptop:py-10">
-          <h1 className="text-center sm:text-left cursor-context-menu text-2xl sm:text-4xl lg:text-6xl xxl:text-6xl 2xl:text-[5.2vw] 3xl:text-[5.0rem] font-bold max-w-full sm:max-w-[350px] lg:max-w-[700px] pt-2 capitalize px-8 sm:px-0 font-circular">
+          <h1 className="cursor-context-menu px-8 pt-2 text-center font-circular text-2xl font-bold capitalize text-slate-900 dark:text-white sm:max-w-[350px] sm:px-0 sm:text-left sm:text-4xl lg:max-w-[700px] lg:text-6xl xxl:text-6xl 2xl:text-[5.2vw] 3xl:text-[5rem]">
             <span className="sm:whitespace-nowrap block">
               Next-Gen <span className="text-universal">Expertise</span>
             </span>
@@ -17,11 +22,11 @@ export default function Hero() {
             </span>
           </h1>
 
-          <p className="font-medium md:font-normal text-sm sm:text-lg lg:text-1xl text-paleBlack max-w-full p-2 sm:p-0 w-full sm:max-w-[350px] font-bold text-center sm:text-start font-circular">
+          <p className="w-full max-w-full p-2 text-center font-circular text-sm font-bold text-paleBlack dark:text-slate-300 sm:max-w-[350px] sm:p-0 sm:text-start sm:text-lg md:font-normal lg:text-xl">
             Cultivate high-performance teams through expert learning.
           </p>
 
-          <ul className="grid grid-cols-2 mx-auto sm:flex sm:mx-0 sm:justify-start sm:flex-wrap gap-4 laptop:gap-x-5 laptop:gap-y-3 laptop:text-[0.97rem]">
+          <ul className="mx-auto grid grid-cols-2 gap-4 text-slate-800 dark:text-slate-100 sm:mx-0 sm:flex sm:flex-wrap sm:justify-start laptop:gap-x-5 laptop:gap-y-3 laptop:text-[0.97rem]">
             {["Tailored Solutions", "Industry Insights", "Expert Guidance"].map(
               (item) => (
                 <li key={item} className="flex items-center gap-2 mb-2">
@@ -40,7 +45,8 @@ export default function Hero() {
           <div className="flex mb-6 sm:mb-0 justify-center sm:justify-start">
             <button
               type="button"
-              className="w-[80%] sm:w-[170px] laptop:w-[190px] p-[7px] laptop:py-[10px] text-md font-normal text-white bg-universal rounded-lg shadow-md"
+              onClick={openModal}
+              className="w-[80%] rounded-lg bg-universal p-[7px] text-md font-normal text-white shadow-md transition hover:brightness-110 sm:w-[170px] laptop:w-[190px] laptop:py-[10px]"
             >
               <p className="text-sm md:text-xl">Enquire Now</p>
             </button>

@@ -1,3 +1,5 @@
+ "use client";
+
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/sections/Hero";
@@ -20,39 +22,42 @@ import {
   Testimonials,
   SupportCTA,
 } from "@/components/sections/TestimonialsAndCTA";
+import { EnquiryModalProvider } from "@/components/common/EnquiryModal";
 
 export default function HomePage() {
   return (
-    <div className="w-full overflow-hidden">
-      <div className="w-full flex justify-center">
-        <div className="w-full">
-          <Navbar />
+    <EnquiryModalProvider>
+      <div className="w-full overflow-hidden">
+        <div className="w-full flex justify-center">
+          <div className="w-full">
+            <Navbar />
+          </div>
         </div>
-      </div>
 
-      <div className="flex justify-center items-start">
-        <div className="max-w-[85rem] w-full">
-          <Hero />
+        <div className="flex justify-center items-start">
+          <div className="max-w-[85rem] w-full">
+            <Hero />
+          </div>
         </div>
-      </div>
 
-      <div className="sm:px-16 px-0 flex justify-center items-start">
-        <div className="max-w-[85rem] w-full">
-          <Stats />
-          <Clients />
-          <AccredianEdge />
-          <DomainExpertise />
-          <CourseSegmentation />
-          <WhoShouldJoin />
-          <CatFramework />
-          <HowItWorks />
-          <FAQs />
-          <Testimonials />
-          <SupportCTA />
+        <div className="sm:px-16 px-0 flex justify-center items-start">
+          <div className="max-w-[85rem] w-full">
+            <Stats />
+            <Clients />
+            <AccredianEdge />
+            <DomainExpertise />
+            <CourseSegmentation />
+            <WhoShouldJoin />
+            <CatFramework />
+            <HowItWorks />
+            <FAQs />
+            <Testimonials />
+            <SupportCTA />
+          </div>
         </div>
-      </div>
 
-      <Footer />
-    </div>
+        <Footer />
+      </div>
+    </EnquiryModalProvider>
   );
 }

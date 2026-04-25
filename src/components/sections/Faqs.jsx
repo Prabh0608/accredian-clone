@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { faqCategories, faqs } from "@/lib/data";
+import { useEnquiryModal } from "@/components/common/EnquiryModal";
 
 function Accordion({ q, a }) {
   const [open, setOpen] = useState(false);
@@ -35,6 +36,7 @@ function Accordion({ q, a }) {
 
 export default function FAQs() {
   const [activeCategory, setActiveCategory] = useState(faqCategories[0]);
+  const { openModal } = useEnquiryModal();
 
   return (
     <div
@@ -43,7 +45,7 @@ export default function FAQs() {
     >
       <div className="w-full max-w-[85rem]">
         <div className="w-full">
-          <h2 className="text-2xl mx-1 md:text-4xl font-bold text-gray-900 leading-tight">
+          <h2 className="text-2xl mx-1 font-bold leading-tight text-gray-900 dark:text-white md:text-4xl">
             Frequently Asked <span className="text-universal">Questions</span>
           </h2>
         </div>
@@ -58,15 +60,15 @@ export default function FAQs() {
                   onClick={() => setActiveCategory(cat)}
                   className={`w-full max-w-[280px] rounded-md px-4 py-4 text-center cursor-pointer transition-all ${
                     activeCategory === cat
-                      ? "drop-shadow-lg md:drop-shadow-xl bg-white border"
-                      : "border-2 border-neutral-300"
+                      ? "border bg-white drop-shadow-lg dark:border-slate-600 dark:bg-slate-900 md:drop-shadow-xl"
+                      : "border-2 border-neutral-300 dark:border-slate-700"
                   }`}
                 >
                   <h1
                     className={`text-sm whitespace-nowrap lg:text-lg font-semibold ${
                       activeCategory === cat
                         ? "text-universal"
-                        : "text-neutral-500"
+                        : "text-neutral-500 dark:text-slate-400"
                     }`}
                   >
                     {cat}
@@ -86,7 +88,11 @@ export default function FAQs() {
 
         {/* Enquire Now CTA */}
         <div className="flex justify-center mt-6">
-          <button className="px-6 py-3 bg-universal text-white font-semibold rounded-lg shadow-md transition duration-300">
+          <button
+            type="button"
+            onClick={openModal}
+            className="rounded-lg bg-universal px-6 py-3 font-semibold text-white shadow-md transition duration-300 hover:brightness-110"
+          >
             Enquire Now
           </button>
         </div>
