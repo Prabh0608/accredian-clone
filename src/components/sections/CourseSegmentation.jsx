@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { courseSlides, whoJoin, IMAGES } from "@/lib/data";
 
 // ── Who Should Join Icons ────────────────────────────────────────────────────
@@ -83,7 +83,19 @@ const WhoIcons = {
 
 // ── Course Segmentation (Swiper-like manual carousel) ─────────────────────────
 export function CourseSegmentation() {
+  const [isMobile, setIsMobile] = useState(false);
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 769);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const prev = () =>
     setActive((p) => (p === 0 ? courseSlides.length - 1 : p - 1));
@@ -102,83 +114,100 @@ export function CourseSegmentation() {
         </p>
       </div>
 
-      <div className="relative px-6">
-        {/* Cards container */}
-        <div className="flex gap-6 overflow-hidden">
-          {/* Show 2 cards on desktop, 1 on mobile */}
-          {courseSlides.map((slide, idx) => {
-            const isVisible =
-              idx === active || idx === (active + 1) % courseSlides.length;
+      {isMobile ? (
+        <div className="relative px-6">
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{ transform: `translateX(-${active * 100}%)` }}
+            >
+              {courseSlides.map((slide) => (
+                <div key={slide.label} className="w-full flex-shrink-0">
+                  <div className="bg-white rounded-lg w-full shadow-lg border border-gray-300">
+                    <img
+                      src={slide.img}
+                      alt={slide.alt}
+                      className="w-full h-40 object-cover rounded-t-lg"
+                    />
+                    <h4 className="text-2xl font-semibold text-universal p-6">
+                      {slide.label}
+                    </h4>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-            return (
-              <div
-                key={slide.label}
-                className={`transition-all duration-300 flex-shrink-0 ${
-                  isVisible ? "block" : "hidden sm:block"
-                } bg-white rounded-lg w-full sm:max-w-[600px] shadow-lg border border-gray-300`}
-              >
-                <img
-                  src={slide.img}
-                  alt={slide.alt}
-                  className="w-full h-40 object-cover rounded-t-lg"
-                />
-                <h4 className="text-2xl font-semibold text-universal p-6">
-                  {slide.label}
-                </h4>
-              </div>
-            );
-          })}
+          <button
+            type="button"
+            onClick={prev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2 text-universal"
+            aria-label="Previous"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </button>
+          <button
+            type="button"
+            onClick={next}
+            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2 text-universal"
+            aria-label="Next"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </button>
+
+          <div className="flex justify-center gap-2 mt-4">
+            {courseSlides.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setActive(i)}
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                  i === active ? "bg-universal" : "bg-gray-300"
+                }`}
+              />
+            ))}
+          </div>
         </div>
-
-        {/* Prev / Next */}
-        <button
-          onClick={prev}
-          disabled={active === 0}
-          className="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2 text-universal disabled:opacity-30"
-          aria-label="Previous"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </button>
-        <button
-          onClick={next}
-          disabled={active === courseSlides.length - 1}
-          className="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2 text-universal disabled:opacity-30"
-          aria-label="Next"
-        >
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M9 18l6-6-6-6" />
-          </svg>
-        </button>
-
-        {/* Dots */}
-        <div className="flex justify-center gap-2 mt-4">
-          {courseSlides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => setActive(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-colors ${
-                i === active ? "bg-universal" : "bg-gray-300"
-              }`}
-            />
+      ) : (
+        <div className="mt-8 grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6">
+          {courseSlides.map((slide) => (
+            <div
+              key={slide.label}
+              className="bg-white rounded-lg shadow-lg border border-gray-300"
+            >
+              <img
+                src={slide.img}
+                alt={slide.alt}
+                className="w-full h-40 object-cover rounded-t-lg mb-4"
+              />
+              <h4 className="text-2xl font-semibold text-universal px-6">
+                {slide.label}
+              </h4>
+              <p className="text-gray-600 hidden sm:block mt-2 text-sm px-6 pb-6">
+                {slide.description}
+              </p>
+            </div>
           ))}
         </div>
-      </div>
+      )}
     </section>
   );
 }

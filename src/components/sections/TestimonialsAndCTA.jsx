@@ -1,16 +1,30 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { testimonials } from "@/lib/data";
 
 // ── Testimonials ──────────────────────────────────────────────────────────────
 export function Testimonials() {
+  const [isMobile, setIsMobile] = useState(true);
   const [active, setActive] = useState(0);
 
-  const prev = () =>
-    setActive((p) => (p === 0 ? testimonials.length - 1 : p - 1));
-  const next = () =>
-    setActive((p) => (p === testimonials.length - 1 ? 0 : p + 1));
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 700);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const slidesPerView = isMobile ? 1 : 2;
+  const maxIndex = Math.max(0, testimonials.length - slidesPerView);
+
+  useEffect(() => {
+    setActive((current) => Math.min(current, maxIndex));
+  }, [maxIndex]);
 
   return (
     <div
@@ -28,18 +42,25 @@ export function Testimonials() {
 
       <div className="w-full px-4">
         <div className="relative">
-          {/* Cards */}
-          <div className="flex gap-4 overflow-hidden">
-            {testimonials.map((t, idx) => {
-              const isVisible =
-                idx === active || idx === (active + 1) % testimonials.length;
-
-              return (
+          <div className="overflow-hidden">
+            <div
+              className="flex transition-transform duration-500 ease-in-out"
+              style={{
+                gap: "10px",
+                transform: `translateX(-${active * (100 / slidesPerView)}%)`,
+              }}
+            >
+              {testimonials.map((t) => (
                 <div
                   key={t.alt}
-                  className={`flex-shrink-0 w-full sm:max-w-[630px] ${isVisible ? "block" : "hidden sm:block"}`}
+                  className="flex h-auto flex-shrink-0"
+                  style={{
+                    width: isMobile
+                      ? "100%"
+                      : "calc((100% - 10px) / 2)",
+                  }}
                 >
-                  <div className="bg-white border border-gray-300 rounded-xl p-6 flex flex-row items-center w-full min-h-[250px]">
+                  <div className="bg-white border border-gray-300 rounded-xl p-6 flex flex-row items-center w-full min-h-[250px] flex-grow">
                     <div className="w-full flex flex-col justify-start items-start pl-6 h-full">
                       <div className="h-16 mb-4 flex items-center gap-4">
                         <img
@@ -55,15 +76,15 @@ export function Testimonials() {
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
 
-          {/* Dots */}
           <div className="flex justify-center gap-2 mt-4">
-            {testimonials.map((_, i) => (
+            {Array.from({ length: maxIndex + 1 }).map((_, i) => (
               <button
                 key={i}
+                type="button"
                 onClick={() => setActive(i)}
                 className={`w-2.5 h-2.5 rounded-full transition-colors ${
                   i === active ? "bg-universal" : "bg-gray-300"

@@ -1,11 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --universal: #2563eb;
+  --universal: #1a73e8;
   --pale-black: #374151;
 }
 
@@ -20,7 +20,7 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Circular Std", "Circular", "Poppins", sans-serif;
   background: #ffffff;
   color: #111827;
   -webkit-font-smoothing: antialiased;
@@ -28,23 +28,24 @@ body {
 
 /* ── text-universal utility ── */
 .text-universal {
-  color: #2563eb;
+  color: #1a73e8;
 }
 .bg-universal {
-  background-color: #2563eb;
+  background-color: #1a73e8;
 }
 .border-universal {
-  border-color: #2563eb;
+  border-color: #1a73e8;
 }
 
 /* ── shadow-card ── */
 .shadow-card {
-  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 65px 1px rgba(0, 7, 43, 0.21);
 }
 
 /* ── second-bg-grad ── */
 .second-bg-grad {
-  background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+  background: #1a73e8;
+  background: radial-gradient(circle, rgba(124, 181, 255, 0.16), #ffffff);
 }
 
 /* ── cta-grad ── */

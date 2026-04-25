@@ -7,14 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        universal: "#2563EB",
+        universal: "#1A73E8",
         paleBlack: "#374151",
       },
       fontFamily: {
-        circular: ["Inter", "sans-serif"],
+        circular: ["Circular Std", "Circular", "Poppins", "sans-serif"],
       },
       screens: {
         xs: "480px",
+        laptop: { min: "1024px", max: "1279px" },
         xxl: "1400px",
         "3xl": "1700px",
       },

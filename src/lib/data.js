@@ -26,14 +26,14 @@ export const IMAGES = {
 
 // ── Nav links (exact from DOM) ──────────────────────────────────────────────
 export const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "Stats", href: "#stats", active: true },
-  { label: "Clients", href: "#clients" },
-  { label: "Accredian Edge", href: "#accredianEdge" },
-  { label: "CAT", href: "#cat" },
-  { label: "How It Works", href: "#howItWorks" },
-  { label: "FAQs", href: "#faqs" },
-  { label: "Testimonials", href: "#testimonials" },
+  { id: "home", title: "Home", href: "#home" },
+  { id: "stats", title: "Stats", href: "#stats" },
+  { id: "clients", title: "Clients", href: "#clients" },
+  { id: "accredianEdge", title: "Accredian Edge", href: "#accredianEdge" },
+  { id: "cat", title: "CAT", href: "#cat" },
+  { id: "howItWorks", title: "How It Works", href: "#howItWorks" },
+  { id: "faqs", title: "FAQs", href: "#faqs" },
+  { id: "testimonials", title: "Testimonials", href: "#testimonials" },
 ];
 
 // ── Stats ───────────────────────────────────────────────────────────────────
@@ -56,12 +56,12 @@ export const stats = [
 
 // ── Clients ─────────────────────────────────────────────────────────────────
 export const clients = [
-  { src: IMAGES.rel, alt: "Reliance" },
-  { src: IMAGES.hcl, alt: "HCL" },
-  { src: IMAGES.ibm, alt: "IBM" },
-  { src: IMAGES.crif, alt: "CRIF" },
-  { src: IMAGES.adp, alt: "ADP" },
-  { src: IMAGES.bayer, alt: "Bayer" },
+  { id: "client-1", src: IMAGES.rel, alt: "Reliance" },
+  { id: "client-3", src: IMAGES.hcl, alt: "HCL" },
+  { id: "client-4", src: IMAGES.ibm, alt: "IBM" },
+  { id: "client-5", src: IMAGES.crif, alt: "CRIF" },
+  { id: "client-6", src: IMAGES.adp, alt: "ADP" },
+  { id: "client-2", src: IMAGES.bayer, alt: "Bayer" },
 ];
 
 // ── Domain Expertise cards ───────────────────────────────────────────────────
@@ -81,14 +81,26 @@ export const courseSlides = [
     img: IMAGES.projectMgmt,
     alt: "Program Specific",
     label: "Program Specific",
+    description: "Certificate, Executive, Post Graduate Certificate",
   },
   {
     img: IMAGES.digitalTrans,
     alt: "Industry Specific",
     label: "Industry Specific",
+    description: "IT, Healthcare, Retail, Finance, Education, Manufacturing",
   },
-  { img: IMAGES.dataScience, alt: "Topic Specific", label: "Topic Specific" },
-  { img: IMAGES.seniorMgmt, alt: "Level Specific", label: "Level Specific" },
+  {
+    img: IMAGES.dataScience,
+    alt: "Topic Specific",
+    label: "Topic Specific",
+    description: "Machine Learning, Design, Analytics, Cybersecurity, Cloud",
+  },
+  {
+    img: IMAGES.seniorMgmt,
+    alt: "Level Specific",
+    label: "Level Specific",
+    description: "Senior Leadership, Mid-Career Professionals, Freshers",
+  },
 ];
 
 // ── Who Should Join ──────────────────────────────────────────────────────────
